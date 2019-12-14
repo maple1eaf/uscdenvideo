@@ -13,19 +13,19 @@
 
 ## 使用方法
 可以采用`Run All`或`Run by Steps`。
-- Run All:
-    1. 新建`config.json`并录入以下信息:
-        - 登录DEN的`username`
-        - 登录DEN的`password`
-        - 要下载视频的网页的`URL`
-    2. 执行`./run.sh`
-- Run by Steps:
-    1. 新建`config.json`并录入以下信息:
-        - 登录DEN的`username`
-        - 登录DEN的`password`
-        - 要下载视频的网页的`URL`
-    2. 执行`python parser.py`获得视频解析之后的链接`urlOfVideos.json`。
-    3. 执行`python downloader.py`下载视频
+#### Run All
+1. 在项目根文件夹中新建`config.json`并录入以下信息:
+    - 登录DEN的`username`
+    - 登录DEN的`password`
+    - 要下载视频的网页的`URL`
+2. 执行`./run.sh`
+#### Run by Steps:
+1. 在项目根文件夹中新建`config.json`并录入以下信息:
+    - 登录DEN的`username`
+    - 登录DEN的`password`
+    - 要下载视频的网页的`URL`
+2. 执行`python parser.py`获得视频解析之后的链接`urlOfVideos.json`。
+3. 执行`python downloader.py`下载视频
 
 #### 关于config.json
 `config.json`示例：
