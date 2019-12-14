@@ -4,13 +4,16 @@ import time
 from selenium.webdriver.common.keys import Keys
 import json
 
-USER_NAME = ""
-PASSWORD = ""
 SLEEP_TIME = 5
 
 # load urls
 with open("config.json", "r", encoding="utf-8") as f:
-    urlWebContainVideos = json.load(f)
+    config = json.load(f)
+
+userName = config['username']
+password = config['password']
+urlWebContainVideos = config['urls']
+print(urlWebContainVideos)
 
 # get cookies
 chrome_options = webdriver.ChromeOptions()
@@ -22,8 +25,8 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get('https://courses.uscden.net/d2l/login')
 time.sleep(SLEEP_TIME)
 
-driver.find_element_by_id('userName').send_keys(USER_NAME)
-driver.find_element_by_id('password').send_keys(PASSWORD, Keys.ENTER)
+driver.find_element_by_id('userName').send_keys(userName)
+driver.find_element_by_id('password').send_keys(password, Keys.ENTER)
 cookies = driver.get_cookies()
 # print(cookies)
 
@@ -41,8 +44,13 @@ def getM3u8(urlWebContainVideo):
     driver.get(urlWebContainVideo)
     time.sleep(SLEEP_TIME)
 
-    # with open("lecture01.html", "w") as f:
+    # with open("dev_sth/h1.html", "w") as f:
     #     f.write(driver.page_source)
+    fileTitle = driver.title
+    print("fileTitle:",fileTitle)
+
+    folderName = driver.find_element_by_xpath('//ol[@aria-labelledby]/li[2]/a').get_attribute("innerHTML")
+    print("folderName:",folderName)
 
     iframe_inner_html = driver.find_element_by_tag_name('iframe').get_attribute('src')
     # print("iframe_inner_html:",iframe_inner_html)
@@ -60,16 +68,20 @@ def getM3u8(urlWebContainVideo):
     strRemoveSecondThird = strRemovedoPlayer.split(',')[0]
     pieces = strRemoveSecondThird[1:-1].split('/')
     urlFileAWS = 'https://denawswz.uscden.net/aws/_definst_/smil:amazons3/gwz/' + pieces[0] + '/' + pieces[0] + '.smil/playlist.m3u8'
+    print('urlFileAWS:', urlFileAWS)
 
-    # print('urlFileAWS:', urlFileAWS)
     time.sleep(SLEEP_TIME)
-    return(urlFileAWS)
-
+    return (folderName, fileTitle, urlFileAWS)
 
 urlDirectVideos = []
 for urlWebContainVideo in urlWebContainVideos:
-    urlFileAWS = getM3u8(urlWebContainVideo)
-    urlDirectVideos.append(urlFileAWS)
+    fn, ft, url = getM3u8(urlWebContainVideo)
+    item = {
+        "foldername": fn,
+        "filetitle": ft,
+        "url": url
+    }
+    urlDirectVideos.append(item)
 
 print(urlDirectVideos)
 

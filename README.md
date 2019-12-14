@@ -12,21 +12,36 @@
     - mac/linux: 将解压后的文件移动到`/usr/loacl/bin`目录中.
 
 ## 使用方法
-1. 在`urlPageContainVideo.json`中录入DEN中含有要下载视频的网页。
-    - 网页示例: ![](./resource/the_link.png)
-2. 在`parser.py`中输入`USER_NAME`和`PASSWORD`。
-3. 执行`python parser.py`获得视频解析之后的链接`urlOfVideos.json`。
-4. 执行`python downloader.py`下载视频
+可以采用`Run All`或`Run by Steps`。
+- Run All:
+    1. 新建`config.json`并录入以下信息:
+        - 登录DEN的`username`
+        - 登录DEN的`password`
+        - 要下载视频的网页的`URL`
+    2. 执行`./run.sh`
+- Run by Steps:
+    1. 新建`config.json`并录入以下信息:
+        - 登录DEN的`username`
+        - 登录DEN的`password`
+        - 要下载视频的网页的`URL`
+    2. 执行`python parser.py`获得视频解析之后的链接`urlOfVideos.json`。
+    3. 执行`python downloader.py`下载视频
 
 #### 关于config.json
-- `URL`列表是一个`Array`
-- 如果某个星期没有DEN（例如放假），用空字符串代替: `""`
-
 `config.json`示例：
 ```json
-[
-    "https://courses.uscden.net/d2l/le/content/13177/viewContent/195596/View",
-    "",
-    "https://courses.uscden.net/d2l/le/content/13177/viewContent/195596/View"
-]
+{
+    "username": "abc@usc.edu",
+    "password": "abcdefg",
+    "urls": [
+        "https://courses.uscden.net/d2l/le/content/16098/viewContent/275571/View",
+        "https://courses.uscden.net/d2l/le/content/16098/viewContent/275938/View",
+        "https://courses.uscden.net/d2l/le/content/16098/viewContent/276273/View",
+        "https://courses.uscden.net/d2l/le/content/16098/viewContent/276574/View",
+        "https://courses.uscden.net/d2l/le/content/16098/viewContent/277068/View",
+        "https://courses.uscden.net/d2l/le/content/16098/viewContent/277334/View"
+    ]
+}
 ```
+`URL`图示:
+![网页示例](./resource/the_link.png)

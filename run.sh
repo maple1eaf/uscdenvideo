@@ -1,0 +1,1 @@
+python parser.py && python downloader.py
