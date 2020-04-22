@@ -3,9 +3,9 @@
 ## 依赖的包和软件
 - `Python 3`
 - `ffmpeg` (mac下建议用homebrew安装)
-- Python三方包: `requests` (通过pip或者conda安装)
-- Python三方包: `selenium` (开发用的3.141.0版本，通过pip或者conda安装)
-- `selenium`使用的浏览器驱动
+- Python三方包: `requests` (通过pip或者conda安装): `pip3 install requests`
+- Python三方包: `selenium` (开发用的3.141.0版本，通过pip或者conda安装): `pip3 install selenium`
+- `selenium`使用的浏览器驱动(安装方法见下)
 #### 关于selenium浏览器驱动
 开发用的Chrome驱动，[下载地址](https://sites.google.com/a/chromium.org/chromedriver/)
     - win: 将解压后的文件放入配置了环境变量的文件夹, 如python的文件夹.
@@ -14,13 +14,13 @@
 ## 使用方法
 可以采用`Run All`或`Run by Steps`。
 #### Run All
-1. 在项目根文件夹中新建`config.json`并录入以下信息:
+1. 在项目根文件夹中新建`config.json`文件(可通过去掉`config.json.sample`文件中的`.sample`后缀获取)并录入以下信息:
     - 登录DEN的`username`
     - 登录DEN的`password`
     - 要下载视频的网页的`URL`
 2. 执行`./run.sh`
 #### Run by Steps:
-1. 在项目根文件夹中新建`config.json`并录入以下信息:
+1. 在项目根文件夹中新建`config.json`文件(可通过去掉`config.json.sample`文件中的`.sample`后缀获取)并录入以下信息:
     - 登录DEN的`username`
     - 登录DEN的`password`
     - 要下载视频的网页的`URL`
