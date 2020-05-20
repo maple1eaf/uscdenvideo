@@ -1,15 +1,15 @@
 # USC DEN 视频下载小工具
 
 ## 依赖的包和软件
+- 运行环境：mac/linux
 - `Python 3`
 - `ffmpeg` (mac下建议用homebrew安装)
-- Python三方包: `requests` (通过pip或者conda安装): `pip3 install requests`
-- Python三方包: `selenium` (开发用的3.141.0版本，通过pip或者conda安装): `pip3 install selenium`
+- Python三方包: `requests` (通过pip或者conda安装): `pip3 install requests` 或者 `conda install requests`
+- Python三方包: `selenium` (通过pip或者conda安装): `pip3 install selenium` 或者 `conda install selenium`
 - `selenium`使用的浏览器驱动(安装方法见下)
 #### 关于selenium浏览器驱动
-开发用的Chrome驱动，[下载地址](https://sites.google.com/a/chromium.org/chromedriver/)
-    - win: 将解压后的文件放入配置了环境变量的文件夹, 如python的文件夹.
-    - mac/linux: 将解压后的文件移动到`/usr/loacl/bin`目录中.
+Chrome驱动，[下载地址](https://sites.google.com/a/chromium.org/chromedriver/)。
+将解压后的文件移动到`/usr/loacl/bin`目录中.
 
 ## 使用方法
 可以采用`Run All`或`Run by Steps`。
