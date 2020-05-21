@@ -33,8 +33,8 @@ Chrome驱动，[下载地址](https://sites.google.com/a/chromium.org/chromedriv
 {
     "username": "abc@usc.edu",
     "password": "abcdefg",
-    "course_id": "13177"
+    "course_id": "csci123"
 }
 ```
-`URL`图示:
-![网页示例](./resource/the_link.png)
+<!-- `URL`图示:
+![网页示例]() -->

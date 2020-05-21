@@ -7,6 +7,34 @@ import sys
 
 SLEEP_TIME = 5
 
+def getCourseHashId(driver, course_id):
+    try:
+        header = driver.find_element_by_tag_name('header')
+        course_menu_button = header.find_element_by_class_name('d2l-navigation-s-course-menu')
+        course_menu_button.click()
+        time.sleep(SLEEP_TIME)
+
+        course_selector = driver.find_element_by_id('courseSelectorId')
+        courses_a = course_selector.find_elements_by_tag_name('a')
+
+        target_course_a = None
+        for course_a in courses_a:
+            if course_id in course_a.text.lower():
+                target_course_a = course_a
+                break
+        
+        target_course_home_url = target_course_a.get_attribute('href')
+        l1 = target_course_home_url.split('/')
+        cid = None
+        for i in l1:
+            try:
+                cid = int(i)
+            except:
+                continue
+        return cid
+    except:
+        return None
+
 def getVideoUrls(driver, url_content):
     driver.get(url_content)
     time.sleep(SLEEP_TIME)
@@ -76,9 +104,8 @@ def main():
 
     userName = config['username']
     password = config['password']
-    course_id = config['course_id']
-    url_content = "https://courses.uscden.net/d2l/le/content/%s/Home" % (course_id)
-    print(url_content)
+    course_id = str(config['course_id']).lower()
+    print(course_id)
 
     # get cookies
     chrome_options = webdriver.ChromeOptions()
@@ -98,6 +125,13 @@ def main():
     for cookie in cookies:
         driver.add_cookie(cookie)
     # time.sleep(SLEEP_TIME)
+
+    cid = getCourseHashId(driver, course_id)
+    if cid == None:
+        print('wrong course_id or the course does not exist in your course list.')
+        print('course_id should be as "csci123".')
+        sys.exit(0)
+    url_content = "https://courses.uscden.net/d2l/le/content/%s/Home" % (cid)
 
     urlWebContainVideos = getVideoUrls(driver, url_content)
     # print('\n', urlWebContainVideos)
