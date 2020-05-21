@@ -17,13 +17,13 @@ Chrome驱动，[下载地址](https://sites.google.com/a/chromium.org/chromedriv
 1. 在项目根文件夹中新建`config.json`文件(可通过去掉`config.json.sample`文件中的`.sample`后缀获取)并录入以下信息:
     - 登录DEN的`username`
     - 登录DEN的`password`
-    - 要下载视频的网页的`URL`
+    - 课程的`course_id`
 2. 执行`./run.sh`
 #### Run by Steps:
 1. 在项目根文件夹中新建`config.json`文件(可通过去掉`config.json.sample`文件中的`.sample`后缀获取)并录入以下信息:
     - 登录DEN的`username`
     - 登录DEN的`password`
-    - 要下载视频的网页的`URL`
+    - 课程的`course_id`
 2. 执行`python parser.py`获得视频解析之后的链接`urlOfVideos.json`。
 3. 执行`python downloader.py`下载视频
 
@@ -33,14 +33,7 @@ Chrome驱动，[下载地址](https://sites.google.com/a/chromium.org/chromedriv
 {
     "username": "abc@usc.edu",
     "password": "abcdefg",
-    "urls": [
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/275571/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/275938/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/276273/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/276574/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/277068/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/277334/View"
-    ]
+    "course_id": "13177"
 }
 ```
 `URL`图示:

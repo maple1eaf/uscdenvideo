@@ -1,10 +1,5 @@
 {
     "username": "xxx@usc.edu",
     "password": "xxxxxxx",
-    "urls": [
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/275571/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/275938/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/276273/View",
-        "https://courses.uscden.net/d2l/le/content/16098/viewContent/276574/View"
-    ]
+    "course_id": "13177"
 }
